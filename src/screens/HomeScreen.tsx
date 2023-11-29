@@ -1,11 +1,10 @@
 // HomeScreen.tsx
 
-import React, { useCallback, useEffect, useState } from 'react';
-import { ScrollView, View, StyleSheet, Dimensions } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ScrollView, View, Dimensions } from 'react-native';
 import CardBook from '../components/CardBook';
 import Header from '../components/Header';
 import { apiService } from '../services/apiService';
-import CreateBookModal from '../components/CreateBookModal';
 
 interface Book {
   id: string;
