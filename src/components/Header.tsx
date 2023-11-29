@@ -1,18 +1,37 @@
 // components/Header.tsx
 
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Image, StyleSheet, Dimensions, TouchableOpacity, Text } from 'react-native';
+import CreateBookModal from './CreateBookModal';
 
-export default function Header() {
+
+interface HomeFetchInterface {
+  homeFetch: () => void;
+}
+
+export default function Header(props: HomeFetchInterface) {
+  const [isCreateModalVisible, setIsCreteModalVisible] = useState(false);
+
+  const openCreateModal = () => {
+    setIsCreteModalVisible(true);
+  };
+
+  const closeCreateModal = () => {
+    props.homeFetch();
+    setIsCreteModalVisible(false);
+  };
+
   return (
     <View style={styles.header}>
       <Text style={styles.textHeader}> Bubbook</Text>
 
-      <TouchableOpacity style={styles.floatingButton} onPress={() => console.log('Botón presionado')}>
+      <TouchableOpacity style={styles.floatingButton} onPress={() => openCreateModal()}>
         <Image source={require('../assets/icons/add-icon.png')} style={styles.icon} />
       </TouchableOpacity>
+      <CreateBookModal isVisible={isCreateModalVisible} onClose={closeCreateModal}></CreateBookModal>
 
     </View>
+    
   );
 };
 

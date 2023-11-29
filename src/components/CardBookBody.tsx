@@ -1,32 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { apiService } from '../services/apiService';
+import EditBookModal from './EditBookModal';
 
 interface BookCardBodyProps {
-  titulo: string;
-  autor: string;
+  id: string,
+  title: string;
+  author: string;
+  tryFetch: () => void;
 }
 
+
 export default function CardBookBody(props: BookCardBodyProps) {
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
+
+  const openEditModal = () => {
+    setIsEditModalVisible(true);
+  };
+
+  const closeEditModal = () => {
+    console.log('Closing edit modal...');
+    props.tryFetch();
+    setIsEditModalVisible(false);
+  };
+
   return (
     <View style={styles.cardBody}>
         <View style={styles.cardInfo}>
-        <Text style={styles.titulo}>{props.titulo}</Text>
-        <Text style={styles.autor}>{props.autor}</Text>
+          <Text style={styles.titulo}>{props.title}</Text>
+          <Text style={styles.autor}>{props.author}</Text>
         </View>
         <View style={styles.cardButtons}>
         <TouchableOpacity
-            onPress={() => console.log('Editar')}
-        >
+            onPress={() => openEditModal()}>
             <Image source={require('../assets/icons/edit-icon.png')} style={styles.icon} />
 
         </TouchableOpacity>
         <TouchableOpacity
-            onPress={() => console.log('Eliminar')}
-        >
+            onPress={async () => {
+                await apiService.deleteBook(props.id)
+                props.tryFetch()
+              }
+            }>
             <Image source={require('../assets/icons/remove-icon.png')} style={styles.icon} />
 
         </TouchableOpacity>
         </View>
+        <EditBookModal bookData={props} isVisible={isEditModalVisible} onClose={closeEditModal} />
+
     </View>
   );
 }

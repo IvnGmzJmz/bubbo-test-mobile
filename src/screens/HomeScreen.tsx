@@ -1,41 +1,57 @@
 // HomeScreen.tsx
 
-import React from 'react';
-import { ScrollView, View, StyleSheet } from 'react-native';
+import React, { useCallback, useEffect, useState } from 'react';
+import { ScrollView, View, StyleSheet, Dimensions } from 'react-native';
 import CardBook from '../components/CardBook';
 import Header from '../components/Header';
+import { apiService } from '../services/apiService';
+import CreateBookModal from '../components/CreateBookModal';
 
-interface Libro {
-  titulo: string;
-  autor: string;
-  portada: string;
+interface Book {
+  id: string;
+  title: string;
+  author: string;
+  image: string;
 }
 
-const libros: Libro[] = [
-  // Datos de ejemplo
-  {
-    titulo: 'El nombre del viento',
-    autor: 'Patrick Rothfuss',
-    portada: 'https://m.media-amazon.com/images/I/91UNBSQddOL._AC_UF1000,1000_QL80_.jpg',
-  },
-  {
-    titulo: 'Cien años de soledad',
-    autor: 'Gabriel García Márquez',
-    portada: 'https://m.media-amazon.com/images/I/91TvVQS7loL._AC_UF1000,1000_QL80_.jpg',
-  },
-];
-
 export default function HomeScreen() {
+  const [books, setBooks] = useState<any[]>([]);
+
+  useEffect(() => {
+    // Ejemplo de cómo usar el servicio para obtener la lista de libros al cargar la pantalla
+
+
+    getBooksApi();
+  }, []);
+
+  const getBooksApi = async () => {
+    try {
+      const books = await apiService.getBooks();
+      console.log(books)
+      setBooks(books)
+    } catch (error) {
+      console.error('Error al obtener la lista de libros:', error);
+    }
+  };
+
+  const tryFetch = async () => {
+    await getBooksApi()
+  };
+
   return (
+    
     <View>
-        <Header></Header>
-        <ScrollView contentContainerStyle={{height: "100%"}}>
-            {libros.map((libro, index) => (
+        <Header homeFetch={tryFetch}></Header>
+        
+        <ScrollView style={{maxHeight:Dimensions.get('window').height * 0.85}} bounces={false}>
+            {books.map((book, index) => (
                 <CardBook
-                key={index}
-                titulo={libro.titulo}
-                autor={libro.autor}
-                portada={libro.portada}
+                  key={book.id}
+                  id={book.id}
+                  title={book.title}
+                  author={book.author}
+                  image={book.image}
+                  tryFetch={tryFetch}
                 />
             ))}
         </ScrollView>
@@ -44,12 +60,10 @@ export default function HomeScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-  },
-});
 
+function addBook() {
+  throw new Error('Function not implemented.');
+}
 // CardBook.tsx
 
 

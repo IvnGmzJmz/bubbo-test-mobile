@@ -4,17 +4,19 @@ import CardBookHeader from './CardBookHeader';
 import CardBookBody from './CardBookBody';
 
 interface BookCardProps {
-  titulo: string;
-  autor: string;
-  portada: string;
+  id: string;
+  title: string;
+  author: string;
+  image: string;
+  tryFetch: () => void;
 }
 
 export default function CardBook(props: BookCardProps) {
   return (
     <TouchableOpacity onPress={() => console.log('Detalle')}>
       <View style={styles.card}>
-        <CardBookHeader portada={props.portada}></CardBookHeader>
-        <CardBookBody titulo={props.titulo} autor={props.autor}></CardBookBody>
+        <CardBookHeader image={props.image}></CardBookHeader>
+        <CardBookBody id={props.id} title={props.title} author={props.author} tryFetch={props.tryFetch}></CardBookBody>
       </View>
     </TouchableOpacity>
   );
