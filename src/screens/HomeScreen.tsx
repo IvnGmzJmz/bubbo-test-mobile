@@ -29,7 +29,7 @@ export default function HomeScreen() {
   return (
     <View>
         <Header></Header>
-        <ScrollView>
+        <ScrollView contentContainerStyle={{height: "100%"}}>
             {libros.map((libro, index) => (
                 <CardBook
                 key={index}
