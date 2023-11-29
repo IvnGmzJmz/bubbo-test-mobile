@@ -3,6 +3,7 @@
 import React from 'react';
 import { ScrollView, View, StyleSheet } from 'react-native';
 import CardBook from '../components/CardBook';
+import Header from '../components/Header';
 
 interface Libro {
   titulo: string;
@@ -26,17 +27,20 @@ const libros: Libro[] = [
 
 export default function HomeScreen() {
   return (
-    
-    <ScrollView>
-      {libros.map((libro, index) => (
-        <CardBook
-          key={index}
-          titulo={libro.titulo}
-          autor={libro.autor}
-          portada={libro.portada}
-        />
-      ))}
-    </ScrollView>
+    <View>
+        <Header></Header>
+        <ScrollView>
+            {libros.map((libro, index) => (
+                <CardBook
+                key={index}
+                titulo={libro.titulo}
+                autor={libro.autor}
+                portada={libro.portada}
+                />
+            ))}
+        </ScrollView>
+    </View>
+
   );
 }
 
