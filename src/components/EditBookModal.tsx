@@ -3,21 +3,10 @@
 import React, { useEffect, useState } from 'react';
 import { Modal, View, Text, Button, TextInput, StyleSheet, TouchableOpacity, SafeAreaView, Dimensions } from 'react-native';
 import { apiService } from '../services/apiService';
+import { Book, DataModalProps } from '../Interfaces';
 
-interface Book {
-  title: string;
-  author: string;
-  image: string;
-  sinopsis: string;
-}
 
-interface EditBookModalProps {
-  isVisible: boolean;
-  onClose: () => void;
-  bookData: any;
-}
-
-export default function EditBookModal({ isVisible, onClose, bookData }: EditBookModalProps) {
+export default function EditBookModal({ isVisible, onClose, bookData }: DataModalProps) {
   const [newBookData, setNewBookData] = useState<Book>({
     title: bookData.title,
     author: bookData.author,
@@ -67,9 +56,10 @@ export default function EditBookModal({ isVisible, onClose, bookData }: EditBook
 
         <TextInput
           placeholder="Sinopsis"
+          multiline
           value={newBookData.sinopsis}
           onChangeText={(text) => setNewBookData({ ...newBookData, sinopsis: text })}
-          style={styles.input}
+          style={styles.inputArea}
         />
 
         <View style={styles.actionButtons}>
@@ -95,6 +85,15 @@ const styles = StyleSheet.create({
   },
   input: {
     height: Dimensions.get('window').height*0.08,
+    borderColor: 'grey',
+    borderWidth: 1,
+    marginBottom: Dimensions.get('window').height*0.02,
+    paddingHorizontal: 10,
+    width: '90%',
+    borderRadius: 15,
+  },
+  inputArea: {
+    height: Dimensions.get('window').height*0.1,
     borderColor: 'grey',
     borderWidth: 1,
     marginBottom: Dimensions.get('window').height*0.02,

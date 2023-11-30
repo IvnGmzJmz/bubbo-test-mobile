@@ -3,11 +3,9 @@
 import React, { useState } from 'react';
 import { View, Image, StyleSheet, Dimensions, TouchableOpacity, Text } from 'react-native';
 import CreateBookModal from './CreateBookModal';
+import { HomeFetchInterface } from '../Interfaces';
 
 
-interface HomeFetchInterface {
-  homeFetch: () => void;
-}
 
 export default function Header(props: HomeFetchInterface) {
   const [isCreateModalVisible, setIsCreteModalVisible] = useState(false);

@@ -4,15 +4,8 @@ import CardBookHeader from './CardBookHeader';
 import CardBookBody from './CardBookBody';
 import { useNavigation } from '@react-navigation/native';
 import DetailBookModal from './DetailBookModal';
+import { BookCardProps } from '../Interfaces';
 
-interface BookCardProps {
-  id: string;
-  title: string;
-  author: string;
-  image: string;
-  sinopsis: string;
-  tryFetch: () => void;
-}
 
 export default function CardBook(props: BookCardProps) {
   const [isDetailBookModal, setisDetailBookModal] = useState(false);

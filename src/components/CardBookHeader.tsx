@@ -1,9 +1,8 @@
 import React from 'react';
 import { View, Image, StyleSheet } from 'react-native';
+import { BookCardHeaderProps } from '../Interfaces';
 
-interface BookCardHeaderProps {
-    image: string;
-}
+
 
 export default function CardBookHeader(props: BookCardHeaderProps) {
   return (

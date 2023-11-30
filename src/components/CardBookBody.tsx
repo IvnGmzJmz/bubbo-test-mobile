@@ -2,18 +2,10 @@ import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { apiService } from '../services/apiService';
 import EditBookModal from './EditBookModal';
-
-interface BookCardBodyProps {
-  id: string,
-  title: string;
-  author: string;
-  image: string;
-  sinopsis:string;
-  tryFetch: () => void;
-}
+import { BookCardProps } from '../Interfaces';
 
 
-export default function CardBookBody(props: BookCardBodyProps) {
+export default function CardBookBody(props: BookCardProps) {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 
   const openEditModal = () => {

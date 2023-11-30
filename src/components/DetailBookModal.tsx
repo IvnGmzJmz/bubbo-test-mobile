@@ -1,22 +1,12 @@
 // EditBookModal.tsx
 
 import React, { useState } from 'react';
-import { Modal, View, Text, Button, StyleSheet, SafeAreaView, Dimensions, Image } from 'react-native';
+import { Modal, View, Text, Button, StyleSheet, SafeAreaView, Dimensions, Image, TouchableOpacity } from 'react-native';
+import { Book, DataModalProps } from '../Interfaces';
 
-interface Book {
-  title: string;
-  author: string;
-  image: string;
-  sinopsis: string;
-}
 
-interface EditBookModalProps {
-  isVisible: boolean;
-  onClose: () => void;
-  bookData: any;
-}
 
-export default function DetailBookModal({ isVisible, onClose, bookData }: EditBookModalProps) {
+export default function DetailBookModal({ isVisible, onClose, bookData }: DataModalProps) {
   const [newBookData, setNewBookData] = useState<Book>({
     title: bookData.title,
     author: bookData.author,
@@ -29,7 +19,10 @@ export default function DetailBookModal({ isVisible, onClose, bookData }: EditBo
     <Modal visible={isVisible} animationType="slide">
       <SafeAreaView style={styles.modalContainer}>
         <View style={styles.actionButtons}>
-          <Button title="< Back" onPress={onClose} />
+          <TouchableOpacity onPress={onClose}>
+              <Image source={require('../assets/icons/close-icon.png')} style={styles.icon} />
+
+          </TouchableOpacity>        
         </View>
         <View style={styles.detailHeader}>
           <View style={styles.detailHeaderImage}>
@@ -84,6 +77,14 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   actionButtons: {
-    flexDirection: 'row',
+    flexDirection: 'row-reverse',
+  },
+  icon: {
+    width: Dimensions.get('window').width * 0.03,
+    height: Dimensions.get('window').height * 0.03, 
+    marginHorizontal: Dimensions.get('window').width * 0.01,
+    marginRight: 10,
+    marginTop: 10,
+    tintColor: 'grey'
   },
 });
