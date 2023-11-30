@@ -1,7 +1,7 @@
 // EditBookModal.tsx
 
-import React, { useEffect, useState } from 'react';
-import { Modal, View, Text, Button, TextInput, StyleSheet, TouchableOpacity, SafeAreaView, Dimensions } from 'react-native';
+import React, { useState } from 'react';
+import { Modal, View, Text, Button, TextInput, StyleSheet, SafeAreaView, Dimensions } from 'react-native';
 import { apiService } from '../services/apiService';
 import { Book, DataModalProps } from '../Interfaces';
 

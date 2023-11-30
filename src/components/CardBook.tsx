@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import CardBookHeader from './CardBookHeader';
 import CardBookBody from './CardBookBody';
-import { useNavigation } from '@react-navigation/native';
 import DetailBookModal from './DetailBookModal';
 import { BookCardProps } from '../Interfaces';
 
