@@ -5,7 +5,8 @@ import { View, Image, StyleSheet, Dimensions, TouchableOpacity, Text } from 'rea
 import CreateBookModal from './CreateBookModal';
 import { HomeFetchInterface } from '../Interfaces';
 
-
+const ScreenHeight = Dimensions.get('window').height;
+const ScreenWidth = Dimensions.get('window').width;
 
 export default function Header(props: HomeFetchInterface) {
   const [isCreateModalVisible, setIsCreateModalVisible] = useState(false);
@@ -34,11 +35,11 @@ export default function Header(props: HomeFetchInterface) {
 
 const styles = StyleSheet.create({
   textHeader: {
-    fontSize: Dimensions.get('window').height*0.03,
+    fontSize: ScreenHeight*0.03,
     fontWeight: 'bold'
   },
   header: {
-    height: Dimensions.get('window').height * 0.1,
+    height: ScreenHeight * 0.1,
     flexDirection: 'row',
     justifyContent: 'space-between', 
     alignItems: 'center',
@@ -46,8 +47,8 @@ const styles = StyleSheet.create({
   },
   floatingButton: {
     borderRadius: 30,
-    width: Dimensions.get('window').width*0.05,
-    height: Dimensions.get('window').height*0.03,
+    width: ScreenWidth*0.05,
+    height: ScreenHeight*0.03,
     paddingRight: 10,
     alignItems: 'center',
     flexDirection: 'row',

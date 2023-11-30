@@ -5,6 +5,8 @@ import { Modal, View, Text, StyleSheet, SafeAreaView, Dimensions, Image, Touchab
 import { Book, DataModalProps } from '../Interfaces';
 
 
+const ScreenHeight = Dimensions.get('window').height;
+const ScreenWidth = Dimensions.get('window').width;
 
 export default function DetailBookModal({ isVisible, onClose, bookData }: DataModalProps) {
 
@@ -53,18 +55,18 @@ const styles = StyleSheet.create({
   },
   detailHeader: {
     flexDirection: 'row',
-    height: Dimensions.get('window').height * 0.3,
+    height: ScreenHeight * 0.3,
   },
   sinopsis: {
-    height: Dimensions.get('window').height * 0.7,
+    height: ScreenHeight * 0.7,
   },
   sinopsisText: {
     padding: 20
   },
   title: {
-    fontSize: Dimensions.get('window').height*0.03,
+    fontSize: ScreenHeight*0.03,
     fontWeight: 'bold',
-    marginBottom: Dimensions.get('window').height*0.01,
+    marginBottom: ScreenHeight*0.01,
   },
   modalContainer: {
     flex: 1,
@@ -74,9 +76,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row-reverse',
   },
   icon: {
-    width: Dimensions.get('window').width * 0.04,
-    height: Dimensions.get('window').height * 0.03, 
-    marginHorizontal: Dimensions.get('window').width * 0.01,
+    width: ScreenWidth * 0.04,
+    height: ScreenHeight * 0.03, 
+    marginHorizontal: ScreenWidth * 0.01,
     marginRight: 10,
     marginTop: 10,
     tintColor: 'grey'

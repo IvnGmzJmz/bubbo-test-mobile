@@ -5,7 +5,8 @@ import { Modal, View, Text, Button, TextInput, StyleSheet, SafeAreaView, Dimensi
 import { apiService } from '../services/apiService';
 import { Book, CreateBookModal as BookModal } from '../Interfaces';
 
-
+const ScreenHeight = Dimensions.get('window').height;
+const ScreenWidth = Dimensions.get('window').width;
 
 export default function CreateBookModal({ isVisible, onClose,onCreateBook }: BookModal) {
   const [newBookData, setNewBookData] = useState<Book>({
@@ -80,9 +81,9 @@ export default function CreateBookModal({ isVisible, onClose,onCreateBook }: Boo
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: Dimensions.get('window').height*0.04,
+    fontSize: ScreenHeight*0.04,
     fontWeight: 'bold',
-    marginBottom: Dimensions.get('window').height*0.04,
+    marginBottom: ScreenHeight*0.04,
   },
   modalContainer: {
     flex: 1,
@@ -91,19 +92,19 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   input: {
-    height: Dimensions.get('window').height*0.08,
+    height: ScreenHeight*0.08,
     borderColor: 'grey',
     borderWidth: 1,
-    marginBottom: Dimensions.get('window').height*0.02,
+    marginBottom: ScreenHeight*0.02,
     paddingHorizontal: 10,
     width: '90%',
     borderRadius: 15,
   },
   inputArea: {
-    height: Dimensions.get('window').height*0.1,
+    height: ScreenHeight*0.1,
     borderColor: 'grey',
     borderWidth: 1,
-    marginBottom: Dimensions.get('window').height*0.02,
+    marginBottom: ScreenHeight*0.02,
     paddingHorizontal: 10,
     width: '90%',
     borderRadius: 15,

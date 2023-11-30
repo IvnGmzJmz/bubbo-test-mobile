@@ -5,6 +5,7 @@ import CardBookBody from './CardBookBody';
 import DetailBookModal from './DetailBookModal';
 import { BookCardProps } from '../Interfaces';
 
+const ScreenHeight = Dimensions.get('window').height;
 
 export default function CardBook(props: BookCardProps) {
   const [isDetailBookModal, setisDetailBookModal] = useState(false);
@@ -41,11 +42,11 @@ export default function CardBook(props: BookCardProps) {
 
 const styles = StyleSheet.create({
   card: {
-    height: Dimensions.get('window').height * 0.3,
+    height: ScreenHeight * 0.3,
     flexDirection: 'row',
     borderWidth: 1,
     borderColor: 'lightgrey',
     borderRadius: 20,
-    margin: Dimensions.get('window').height * 0.01,
+    margin: ScreenHeight * 0.01,
   },
 });

@@ -4,6 +4,8 @@ import { apiService } from '../services/apiService';
 import EditBookModal from './EditBookModal';
 import { BookCardProps } from '../Interfaces';
 
+const ScreenHeight = Dimensions.get('window').height;
+const ScreenWidth = Dimensions.get('window').width;
 
 export default function CardBookBody(props: BookCardProps) {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
@@ -54,14 +56,14 @@ const styles = StyleSheet.create({
   },
   cardInfo: {
     flex: 4,
-    padding: Dimensions.get('window').height * 0.01
+    padding: ScreenHeight * 0.01
   },
   titulo: {
-    fontSize: Dimensions.get('window').height * 0.025,
+    fontSize: ScreenHeight * 0.025,
     fontWeight: 'bold',
   },
   autor: {
-    fontSize: Dimensions.get('window').height * 0.02,
+    fontSize: ScreenHeight * 0.02,
   },
   cardButtons: {
     flex: 1,
@@ -70,9 +72,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   icon: {
-    width: Dimensions.get('window').width * 0.05,
-    height: Dimensions.get('window').height * 0.03, 
-    marginHorizontal: Dimensions.get('window').width * 0.01,
+    width: ScreenWidth * 0.05,
+    height: ScreenHeight * 0.03, 
+    marginHorizontal: ScreenWidth * 0.01,
     tintColor: 'grey', 
   },
 });
