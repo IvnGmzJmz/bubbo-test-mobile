@@ -28,7 +28,7 @@ export default function CardBook(props: BookCardProps) {
               author={props.author} 
               image={props.image}
               sinopsis={props.sinopsis}
-              tryFetch={props.tryFetch}></CardBookBody>
+              onBookAction={props.onBookAction}></CardBookBody>
           </View>
       </TouchableOpacity>
       <DetailBookModal bookData={props} isVisible={isDetailBookModal} onClose={closeDetailModal} />

@@ -14,9 +14,16 @@ export default function EditBookModal({ isVisible, onClose, bookData }: DataModa
     sinopsis: bookData.sinopsis
   });
 
-  const handleSave = () => {
+  const handleSave = async () => {
 
-    apiService.updateBook(bookData.id,newBookData)
+    if (!newBookData.title || !newBookData.author || !newBookData.image) {
+      console.error('Por favor, complete los campos obligatorios.');
+      return;
+    }
+
+    await apiService.updateBook(bookData.id,newBookData)
+
+    bookData.onBookAction();
 
     setNewBookData({
       title: newBookData.title,

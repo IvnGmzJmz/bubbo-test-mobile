@@ -8,15 +8,14 @@ import { HomeFetchInterface } from '../Interfaces';
 
 
 export default function Header(props: HomeFetchInterface) {
-  const [isCreateModalVisible, setIsCreteModalVisible] = useState(false);
+  const [isCreateModalVisible, setIsCreateModalVisible] = useState(false);
 
   const openCreateModal = () => {
-    setIsCreteModalVisible(true);
+    setIsCreateModalVisible(true);
   };
 
   const closeCreateModal = () => {
-    props.homeFetch();
-    setIsCreteModalVisible(false);
+    setIsCreateModalVisible(false);
   };
 
   return (
@@ -26,7 +25,7 @@ export default function Header(props: HomeFetchInterface) {
       <TouchableOpacity style={styles.floatingButton} onPress={() => openCreateModal()}>
         <Image source={require('../assets/icons/add-icon.png')} style={styles.icon} />
       </TouchableOpacity>
-      <CreateBookModal isVisible={isCreateModalVisible} onClose={closeCreateModal}></CreateBookModal>
+      <CreateBookModal onCreateBook={props.onCreateBook} isVisible={isCreateModalVisible} onClose={closeCreateModal}></CreateBookModal>
 
     </View>
     

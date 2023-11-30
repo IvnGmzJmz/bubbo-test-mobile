@@ -13,7 +13,6 @@ export default function CardBookBody(props: BookCardProps) {
   };
 
   const closeEditModal = () => {
-    props.tryFetch();
     setIsEditModalVisible(false);
   };
 
@@ -32,7 +31,7 @@ export default function CardBookBody(props: BookCardProps) {
         <TouchableOpacity
             onPress={async () => {
                 await apiService.deleteBook(props.id)
-                props.tryFetch()
+                props.onBookAction()
               }
             }>
             <Image source={require('../assets/icons/remove-icon.png')} style={styles.icon} />

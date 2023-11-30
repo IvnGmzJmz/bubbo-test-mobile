@@ -4,7 +4,7 @@ export interface BookCardProps {
     author: string;
     image: string;
     sinopsis: string;
-    tryFetch: () => void;
+    onBookAction: () => void;
 }
 
 export interface BookCardHeaderProps {
@@ -20,6 +20,7 @@ export interface Book {
   
 export interface CreateBookModal {
     isVisible: boolean;
+    onCreateBook: () => void;
     onClose: () => void;
 }
 
@@ -30,6 +31,6 @@ export interface DataModalProps {
   }
 
 export interface HomeFetchInterface {
-    homeFetch: () => void;
+    onCreateBook: () => void;
 }
   

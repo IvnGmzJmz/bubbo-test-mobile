@@ -16,31 +16,36 @@ interface Book {
 
 export default function HomeScreen() {
   const [books, setBooks] = useState<any[]>([]);
+  const [refresh, setRefresh] = useState<number>(0);
 
   useEffect(() => {
     // Ejemplo de cómo usar el servicio para obtener la lista de libros al cargar la pantalla
 
 
-    getBooksApi();
+    tryFetch();
   }, []);
 
   const getBooksApi = async () => {
     try {
-      const books = await apiService.getBooks();
-      setBooks(books)
+      const newBooks = await apiService.getBooks();
+      return newBooks;
     } catch (error) {
       console.error('Error al obtener la lista de libros:', error);
+      return [];
     }
   };
+  
 
   const tryFetch = async () => {
-    await getBooksApi()
+    const newBooks = await getBooksApi();
+    setBooks(newBooks);
   };
+  
 
   return (
     
     <View>
-        <Header homeFetch={tryFetch}></Header>
+        <Header onCreateBook={tryFetch}></Header>
         
         <ScrollView style={{maxHeight:Dimensions.get('window').height * 0.85}} bounces={false}>
             {books.map((book, index) => (
@@ -51,7 +56,7 @@ export default function HomeScreen() {
                   author={book.author}
                   image={book.image}
                   sinopsis={book.sinopsis}
-                  tryFetch={tryFetch}
+                  onBookAction={tryFetch}
                 />
             ))}
         </ScrollView>

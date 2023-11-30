@@ -7,12 +7,6 @@ import { Book, DataModalProps } from '../Interfaces';
 
 
 export default function DetailBookModal({ isVisible, onClose, bookData }: DataModalProps) {
-  const [newBookData, setNewBookData] = useState<Book>({
-    title: bookData.title,
-    author: bookData.author,
-    image: bookData.image, 
-    sinopsis: bookData.sinopsis
-  });
 
 
   return (
@@ -26,16 +20,16 @@ export default function DetailBookModal({ isVisible, onClose, bookData }: DataMo
         </View>
         <View style={styles.detailHeader}>
           <View style={styles.detailHeaderImage}>
-            <Image source={{ uri: newBookData.image}} style={styles.image} />
+            <Image source={{ uri: bookData.image}} style={styles.image} />
 
           </View>
           <View style={styles.detailHeaderInfo}>
-            <Text style={styles.title}>{newBookData.title}</Text>
-            <Text>{newBookData.author}</Text>
+            <Text style={styles.title}>{bookData.title}</Text>
+            <Text>{bookData.author}</Text>
           </View>
         </View>
         <View style={styles.sinopsis}>
-          <Text style={styles.sinopsisText}>{newBookData.sinopsis}</Text>
+          <Text style={styles.sinopsisText}>{bookData.sinopsis}</Text>
         </View>
 
 

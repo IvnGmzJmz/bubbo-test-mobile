@@ -7,7 +7,7 @@ import { Book, CreateBookModal as BookModal } from '../Interfaces';
 
 
 
-export default function CreateBookModal({ isVisible, onClose }: BookModal) {
+export default function CreateBookModal({ isVisible, onClose,onCreateBook }: BookModal) {
   const [newBookData, setNewBookData] = useState<Book>({
     title: '',
     author: '',
@@ -17,6 +17,11 @@ export default function CreateBookModal({ isVisible, onClose }: BookModal) {
 
   const handleSave = () => {
 
+    if (!newBookData.title || !newBookData.author || !newBookData.image) {
+      console.error('Por favor, complete los campos obligatorios.');
+      return;
+    }
+
     apiService.createBook(newBookData)
 
     setNewBookData({
@@ -25,7 +30,8 @@ export default function CreateBookModal({ isVisible, onClose }: BookModal) {
       image: '',
       sinopsis: ''
     });
-
+    
+    onCreateBook();
     onClose();
   };
 
