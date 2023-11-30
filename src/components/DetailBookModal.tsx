@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row-reverse',
   },
   icon: {
-    width: Dimensions.get('window').width * 0.03,
+    width: Dimensions.get('window').width * 0.04,
     height: Dimensions.get('window').height * 0.03, 
     marginHorizontal: Dimensions.get('window').width * 0.01,
     marginRight: 10,
