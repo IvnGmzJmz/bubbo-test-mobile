@@ -37,7 +37,7 @@ export default function Header(props: HomeFetchInterface) {
 
 const styles = StyleSheet.create({
   textHeader: {
-    fontSize: 20,
+    fontSize: Dimensions.get('window').height*0.03,
     fontWeight: 'bold'
   },
   header: {
@@ -47,14 +47,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
   },
-  logo: {
-    width: 30,
-    height: 30,
-  },
   floatingButton: {
     borderRadius: 30,
-    width: 30,
-    height: 30,
+    width: Dimensions.get('window').width*0.05,
+    height: Dimensions.get('window').height*0.03,
+    paddingRight: 10,
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',

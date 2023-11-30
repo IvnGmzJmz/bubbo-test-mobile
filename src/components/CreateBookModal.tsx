@@ -1,13 +1,14 @@
 // EditBookModal.tsx
 
 import React, { useEffect, useState } from 'react';
-import { Modal, View, Text, Button, TextInput, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
+import { Modal, View, Text, Button, TextInput, StyleSheet, TouchableOpacity, SafeAreaView, Dimensions } from 'react-native';
 import { apiService } from '../services/apiService';
 
 interface Book {
   title: string;
   author: string;
   image: string;
+  sinopsis: string;
 }
 
 interface CreateBookModal {
@@ -20,6 +21,7 @@ export default function CreateBookModal({ isVisible, onClose }: CreateBookModal)
     title: '',
     author: '',
     image: '', 
+    sinopsis: ''
   });
 
   const handleSave = () => {
@@ -30,6 +32,7 @@ export default function CreateBookModal({ isVisible, onClose }: CreateBookModal)
       title: '',
       author: '',
       image: '',
+      sinopsis: ''
     });
 
     onClose();
@@ -61,6 +64,13 @@ export default function CreateBookModal({ isVisible, onClose }: CreateBookModal)
           style={styles.input}
         />
 
+        <TextInput
+          placeholder="Sinopsis"
+          value={newBookData.sinopsis}
+          onChangeText={(text) => setNewBookData({ ...newBookData, sinopsis: text })}
+          style={styles.input}
+        />
+
         <View style={styles.actionButtons}>
           <Button title="Save" onPress={handleSave} />
           <Button title="Cancel" onPress={onClose} />
@@ -72,9 +82,9 @@ export default function CreateBookModal({ isVisible, onClose }: CreateBookModal)
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 30,
+    fontSize: Dimensions.get('window').height*0.04,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: Dimensions.get('window').height*0.04,
   },
   modalContainer: {
     flex: 1,
@@ -83,10 +93,10 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   input: {
-    height: 60,
+    height: Dimensions.get('window').height*0.08,
     borderColor: 'grey',
     borderWidth: 1,
-    marginBottom: 10,
+    marginBottom: Dimensions.get('window').height*0.02,
     paddingHorizontal: 10,
     width: '90%',
     borderRadius: 15,

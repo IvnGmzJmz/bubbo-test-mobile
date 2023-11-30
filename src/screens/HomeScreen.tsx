@@ -11,6 +11,7 @@ interface Book {
   title: string;
   author: string;
   image: string;
+  sinopsis: string;
 }
 
 export default function HomeScreen() {
@@ -26,7 +27,6 @@ export default function HomeScreen() {
   const getBooksApi = async () => {
     try {
       const books = await apiService.getBooks();
-      console.log(books)
       setBooks(books)
     } catch (error) {
       console.error('Error al obtener la lista de libros:', error);
@@ -50,6 +50,7 @@ export default function HomeScreen() {
                   title={book.title}
                   author={book.author}
                   image={book.image}
+                  sinopsis={book.sinopsis}
                   tryFetch={tryFetch}
                 />
             ))}

@@ -7,6 +7,8 @@ interface BookCardBodyProps {
   id: string,
   title: string;
   author: string;
+  image: string;
+  sinopsis:string;
   tryFetch: () => void;
 }
 
@@ -19,7 +21,6 @@ export default function CardBookBody(props: BookCardBodyProps) {
   };
 
   const closeEditModal = () => {
-    console.log('Closing edit modal...');
     props.tryFetch();
     setIsEditModalVisible(false);
   };
