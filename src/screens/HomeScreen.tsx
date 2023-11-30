@@ -16,7 +16,6 @@ interface Book {
 
 export default function HomeScreen() {
   const [books, setBooks] = useState<any[]>([]);
-  const [refresh, setRefresh] = useState<number>(0);
 
   useEffect(() => {
     // Ejemplo de cómo usar el servicio para obtener la lista de libros al cargar la pantalla
@@ -64,11 +63,5 @@ export default function HomeScreen() {
 
   );
 }
-
-
-function addBook() {
-  throw new Error('Function not implemented.');
-}
-// CardBook.tsx
 
 
